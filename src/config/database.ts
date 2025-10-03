@@ -1,5 +1,7 @@
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
+import { Event } from '../entities/Event';
+import { Booking } from '../entities/Booking';
 
 dotenv.config();
 
@@ -12,7 +14,7 @@ export const AppDataSource = new DataSource({
     database: process.env.DB_DATABASE || 'booking_db',
     synchronize: process.env.NODE_ENV === 'development',
     logging: process.env.NODE_ENV === 'development',
-    entities: [],
+    entities: [Event, Booking],
     migrations: ['src/migrations/**/*.ts'],
     subscribers: [],
 });
