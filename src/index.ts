@@ -7,6 +7,7 @@ import * as dotenv from 'dotenv';
 import { AppDataSource } from './config/database';
 import { connectRedis } from './config/redis';
 import bookingRoutes from './routes/bookingRoutes';
+import metricsRoutes from "./routes/metricsRoutes";
 
 dotenv.config();
 
@@ -70,6 +71,7 @@ async function start() {
         fastify.log.info('Redis connected successfully');
 
         await fastify.register(bookingRoutes);
+        await fastify.register(metricsRoutes);
 
         fastify.get('/health', {
             schema: {

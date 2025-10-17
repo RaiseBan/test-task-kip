@@ -47,6 +47,7 @@ export default async function bookingRoutes(fastify: FastifyInstance) {
         }
     });
 
+
     fastify.get('/api/events/:id', { schema: getEventSchema }, async (request, reply) => {
         try {
             const { id } = request.params as { id: number };
